@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('practice_set_subject', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('practice_set_id')->constrained()->onDelete('cascade');
+            $table->foreignId('subject_id')->constrained()->onDelete('cascade');
+            $table->unique(['practice_set_id', 'subject_id']);    
             $table->timestamps();
         });
     }
